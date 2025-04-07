@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amank – Cybersecurity Awareness </title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 data-en="Amank Cybersecurity Awareness (Demo Version) " data-ar="أمانك - الوعي بأمن المعلومات النسخة التجريبية">Amank Cybersecurity Awareness</h1>
+      <p data-en="Empowering everyone from beginners to aspiring experts" data-ar="تمكين الجميع من المبتدئين إلى الطامحين للخبرة">Empowering everyone from beginners to aspiring experts</p>
+      <div class="lang-switch">
+        <button id="lang-en">English</button>
+        <button id="lang-ar">العربية</button>
+      </div>
+    </header>
+
+    <nav>
+      <a href="#dailyTip" data-en="TIP" data-ar="نصيحة">TIP</a>
+      <a href="#resourceLibrary" data-en="RESOURCES" data-ar="موارد">RESOURCES</a>
+      <a href="#quizSection" data-en="QUIZ" data-ar="اختبار">QUIZ</a>
+    </nav>
+
+    <section id="dailyTip">
+      <strong data-en="Tip of the Day:" data-ar="نصيحة اليوم:">Tip of the Day:</strong>
+      <span id="tipText">Loading...</span>
+      <button onclick="loadDailyTip()" data-en="REFRESH" data-ar="تحديث">REFRESH</button>
+    </section>
+
+    <section id="resourceLibrary">
+      <h2 data-en="Cybersecurity Blogs" data-ar="مدونات أمن المعلومات">Cybersecurity Blogs</h2>
+      <div class="card-container">
+        <div class="card" data-lang="en">
+          <h3>Krebs on Security</h3>
+          <p>Latest threats and news.</p>
+          <a href="https://krebsonsecurity.com" target="_blank">> GO</a>
+        </div>
+        <div class="card" data-lang="en">
+          <h3>Schneier on Security</h3>
+          <p>Expert security analysis.</p>
+          <a href="https://www.schneier.com" target="_blank">> GO</a>
+        </div>
+        <div class="card" data-lang="ar">
+          <h3>ما هو أمن المعلومات وما أهميته؟</h3>
+          <p>مقدمة بسيطة عن أمن المعلومات.</p>
+          <a href="https://www.aljazeera.net/know/2020/10/25/ما-هو-أمن-المعلومات-وما-أهميته" target="_blank">> اذهب</a>
+        </div>
+        <div class="card" data-lang="ar">
+          <h3>التهديدات السيبرانية الشائعة</h3>
+          <p>تعرف على أشهر التهديدات.</p>
+          <a href="https://www.keepersecurity.com/ar_AE/threats/" target="_blank">> اذهب</a>
+        </div>
+        <div class="card" data-lang="ar">
+          <h3>كيف تصنع كلمة مرور قوية؟</h3>
+          <p>نصائح لكلمات مرور آمنة.</p>
+          <a href="https://blog.google/outreach-initiatives/get-digital-ready/ar/كيف-تصنع-كلمة-مرور-قوية" target="_blank">> اذهب</a>
+        </div>
+      </div>
+
+      <h2 data-en="Cybersecurity Courses" data-ar="دورات أمن المعلومات">Cybersecurity Courses</h2>
+      <div class="card-container">
+        <div class="card" data-lang="en">
+          <h3>CS50's Introduction to Cybersecurity</h3>
+          <p>Free intro course from Harvard via edX.</p>
+          <a href="https://www.edx.org/learn/cybersecurity/harvard-university-cs50-s-introduction-to-cybersecurity" target="_blank">> GO</a>
+        </div>
+        <div class="card" data-lang="en">
+          <h3>Cybersecurity Fundamentals</h3>
+          <p>Free basics from Cybrary.</p>
+          <a href="https://www.cybrary.it/course/cybersecurity-fundamentals/" target="_blank">> GO</a>
+        </div>
+        <div class="card" data-lang="en">
+          <h3>Introduction to Cybersecurity</h3>
+          <p>Free course by Cisco Networking Academy.</p>
+          <a href="https://www.netacad.com/courses/cybersecurity/introduction-cybersecurity" target="_blank">> GO</a>
+        </div>
+        <div class="card" data-lang="en">
+          <h3>Google Cybersecurity Certificate</h3>
+          <p>Free trial from Google via Coursera.</p>
+          <a href="https://www.coursera.org/professional-certificates/google-cybersecurity" target="_blank">> GO</a>
+        </div>
+        <div class="card" data-lang="en">
+          <h3>Cybersecurity Essentials</h3>
+          <p>Free course from Open University via FutureLearn.</p>
+          <a href="https://www.futurelearn.com/courses/cyber-security-essentials" target="_blank">> GO</a>
+        </div>
+        <div class="card" data-lang="ar">
+          <h3>كيف تبدأ مسيرتك في أمن المعلومات؟</h3>
+          <p>دليل مجاني للمبتدئين في المجال.</p>
+          <a href="https://blog.arabic.blog.linkedin.com/ar/articles/how-to-start-your-career-in-cybersecurity" target="_blank">> اذهب</a>
+        </div>
+        <div class="card" data-lang="ar">
+          <h3>دليل المبتدئين لتعلم أمن المعلومات</h3>
+          <p>مصادر تعليمية بسيطة ومجانية.</p>
+          <a href="https://www.edraak.org/ar/blog/دليل-المبتدئين-لتعلم-أمن-المعلومات" target="_blank">> اذهب</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="quizSection">
+      <h2 data-en="Quick Cybersecurity Quiz" data-ar="اختبار سريع في أمن المعلومات">Quick Cybersecurity Quiz</h2>
+      <div id="quizContainer"></div>
+      <div id="quizFeedback"></div>
+      <button id="nextBtn" style="display:none;" data-en="NEXT" data-ar="التالي">NEXT</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
