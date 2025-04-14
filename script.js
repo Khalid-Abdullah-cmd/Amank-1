@@ -1,26 +1,48 @@
-const langEnBtn = document.getElementById("lang-en");
-const langArBtn = document.getElementById("lang-ar");
+const langToggleBtn = document.getElementById("lang-toggle");
+const modeToggleBtn = document.getElementById("mode-toggle");
+
+// Set default language state (English)
+let currentLang = "en";
 
 function setLanguage(lang) {
+  currentLang = lang;
   document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  
+  // Update all text elements using data attributes.
   const elements = document.querySelectorAll("[data-en], [data-ar]");
   elements.forEach(el => {
     el.textContent = el.getAttribute(`data-${lang}`);
   });
 
-  const cards = document.querySelectorAll(".card");
-  cards.forEach(card => {
+  // Only display cards matching the current language.
+  document.querySelectorAll(".card").forEach(card => {
     card.classList.toggle("active", card.getAttribute("data-lang") === lang);
   });
-
+  
+  // Update the language toggle button text.
+  langToggleBtn.textContent = lang === "en" ? "EN" : "AR";
+  
+  // Refresh tip and quiz
+  loadDailyTip();
   currentQuestion = 0;
   score = 0;
   showQuestion();
 }
 
-langEnBtn.addEventListener("click", () => setLanguage("en"));
-langArBtn.addEventListener("click", () => setLanguage("ar"));
+// Single language toggle cycles between English and Arabic.
+langToggleBtn.addEventListener("click", () => {
+  setLanguage(currentLang === "en" ? "ar" : "en");
+});
 
+function toggleMode() {
+  document.body.classList.toggle("light-mode");
+  modeToggleBtn.textContent = document.body.classList.contains("light-mode") ? "Dark Mode" : "Light Mode";
+}
+
+modeToggleBtn.addEventListener("click", toggleMode);
+
+// Daily Tips
 const tips = {
   en: [
     "Use strong, unique passwords for every account.",
@@ -40,11 +62,11 @@ const tips = {
 const tipText = document.getElementById("tipText");
 
 function loadDailyTip() {
-  const lang = document.documentElement.lang || "en";
-  tipText.textContent = tips[lang][Math.floor(Math.random() * tips[lang].length)];
+  tipText.textContent = tips[currentLang][Math.floor(Math.random() * tips[currentLang].length)];
 }
 loadDailyTip();
 
+// Quiz Code
 const quizQuestions = {
   en: [
     {
@@ -111,8 +133,7 @@ const nextBtn = document.getElementById("nextBtn");
 function showQuestion() {
   quizFeedback.textContent = "";
   nextBtn.style.display = "none";
-  const lang = document.documentElement.lang || "en";
-  const q = quizQuestions[lang][currentQuestion];
+  const q = quizQuestions[currentLang][currentQuestion];
   quizContainer.innerHTML = `
     <p>${q.question}</p>
     <button onclick="checkAnswer('a')">A: ${q.options.a}</button>
@@ -122,25 +143,29 @@ function showQuestion() {
 }
 
 function checkAnswer(selected) {
-  const lang = document.documentElement.lang || "en";
-  const q = quizQuestions[lang][currentQuestion];
-  quizFeedback.style.color = selected === q.answer ? "#00ff99" : "#ff3333";
-  quizFeedback.textContent = selected === q.answer ? (lang === "en" ? "CORRECT" : "صحيح") : (lang === "en" ? "WRONG" : "خطأ");
+  const q = quizQuestions[currentLang][currentQuestion];
+  quizFeedback.style.color = selected === q.answer ? varColor("--accent") : "#ff3333";
+  quizFeedback.textContent = selected === q.answer
+    ? (currentLang === "en" ? "CORRECT" : "صحيح")
+    : (currentLang === "en" ? "WRONG" : "خطأ");
+    
   if (selected === q.answer) score++;
   const buttons = quizContainer.getElementsByTagName("button");
   for (let btn of buttons) btn.disabled = true;
+  
   nextBtn.style.display = "inline-block";
-  nextBtn.textContent = currentQuestion < quizQuestions[lang].length - 1 ? (lang === "en" ? "NEXT" : "التالي") : (lang === "en" ? "RESULTS" : "النتائج");
+  nextBtn.textContent = currentQuestion < quizQuestions[currentLang].length - 1 
+    ? (currentLang === "en" ? "NEXT" : "التالي")
+    : (currentLang === "en" ? "RESULTS" : "النتائج");
 }
 
 nextBtn.addEventListener("click", () => {
   currentQuestion++;
-  const lang = document.documentElement.lang || "en";
-  if (currentQuestion < quizQuestions[lang].length) {
+  if (currentQuestion < quizQuestions[currentLang].length) {
     showQuestion();
   } else {
-    quizContainer.innerHTML = `<p>${lang === "en" ? "SCORE" : "النتيجة"}: ${score}/${quizQuestions[lang].length}</p>`;
-    nextBtn.textContent = lang === "en" ? "RESTART" : "إعادة";
+    quizContainer.innerHTML = `<p>${currentLang === "en" ? "SCORE" : "النتيجة"}: ${score}/${quizQuestions[currentLang].length}</p>`;
+    nextBtn.textContent = currentLang === "en" ? "RESTART" : "إعادة";
     nextBtn.onclick = () => {
       currentQuestion = 0;
       score = 0;
@@ -149,5 +174,28 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
+// Make cards clickable to open their links
+document.querySelectorAll('.clickable-card').forEach(card => {
+  card.addEventListener('click', function() {
+    const link = this.querySelector('a');
+    if (link) {
+      window.open(link.href, '_blank');
+    }
+  });
+});
+
+// Prevent default behavior of links inside cards
+document.querySelectorAll('.card a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+  });
+});
+
+// Helper: Get computed value for a CSS variable.
+function varColor(variableName) {
+  return getComputedStyle(document.documentElement).getPropertyValue(variableName).trim();
+}
+
+// Set the default language to English on load.
 setLanguage("en");
 showQuestion();
