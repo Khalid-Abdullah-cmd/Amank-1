@@ -3,25 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Amank – Cybersecurity Awareness </title>
+  <title>Amanak</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Fixed Top Navigation Bar -->
+  <nav class="top-nav">
+    <div class="nav-links">
+      <a href="#dailyTip" data-en="TIP" data-ar="نصيحة">TIP</a>
+      <a href="#resourceLibrary" data-en="Blogs" data-ar=" مقالات ">RESOURCES</a>
+      <a href="#courses" data-en="COURSES" data-ar="الدورات">COURSES</a>
+      <a href="#quizSection" data-en="QUIZ" data-ar="اختبار">QUIZ</a>
+    </div>
+    <div class="nav-controls">
+      <!-- Single Language Toggle Button -->
+      <button id="lang-toggle" class="control-btn">EN</button>
+      <!-- Dark/Light Mode Toggle Button -->
+      <button id="mode-toggle" class="control-btn">Light Mode</button>
+    </div>
+  </nav>
+
   <div class="container">
     <header>
-      <h1 data-en="Amank Cybersecurity Awareness (Demo Version) " data-ar="أمانك - الوعي بأمن المعلومات النسخة التجريبية">Amank Cybersecurity Awareness</h1>
-      <p data-en="Empowering everyone from beginners to aspiring experts" data-ar="تمكين الجميع من المبتدئين إلى الطامحين للخبرة">Empowering everyone from beginners to aspiring experts</p>
-      <div class="lang-switch">
-        <button id="lang-en">English</button>
-        <button id="lang-ar">العربية</button>
-      </div>
+      <h1 data-en="Amank" data-ar="أمانك">Amank Cybersecurity Awareness</h1>
+      <p data-en="Unleashing potential: Transforming beginners into tomorrow's cybersecurity pioneers."
+         data-ar="إطلاق العنان للإمكانات: تحويل المبتدئين إلى رواد الأمن السيبراني في المستقبل">
+         Unleashing potential: Transforming beginners into tomorrow's cybersecurity pioneers.
+      </p>
     </header>
-
-    <nav>
-      <a href="#dailyTip" data-en="TIP" data-ar="نصيحة">TIP</a>
-      <a href="#resourceLibrary" data-en="RESOURCES" data-ar="موارد">RESOURCES</a>
-      <a href="#quizSection" data-en="QUIZ" data-ar="اختبار">QUIZ</a>
-    </nav>
 
     <section id="dailyTip">
       <strong data-en="Tip of the Day:" data-ar="نصيحة اليوم:">Tip of the Day:</strong>
@@ -32,69 +41,98 @@
     <section id="resourceLibrary">
       <h2 data-en="Cybersecurity Blogs" data-ar="مدونات أمن المعلومات">Cybersecurity Blogs</h2>
       <div class="card-container">
-        <div class="card" data-lang="en">
-          <h3>Krebs on Security</h3>
-          <p>Latest threats and news.</p>
-          <a href="https://krebsonsecurity.com" target="_blank">> GO</a>
+        <!-- Arabic Cards for Blogs -->
+        <div class="card clickable-card" data-lang="ar">
+          <h3>نصائح للآباء لحماية أبنائهم على الإنترنت</h3>
+          <p>إزاي تحافظ على سلامة أطفالك من مخاطر الإنترنت.</p>
+          <a href="https://www.unicef.org/jordan/ar/%D9%86%D8%B5%D8%A7%D8%A6%D8%AD-%D9%84%D8%A3%D9%88%D9%84%D9%8A%D8%A7%D8%A1-%D8%A7%D9%84%D8%A3%D9%85%D9%88%D8%B1-%D9%84%D9%84%D8%AD%D9%81%D8%A7%D8%B8-%D8%B9%D9%84%D9%89-%D8%B3%D9%84%D8%A7%D9%85%D8%A9-%D8%A3%D8%B7%D9%81%D8%A7%D9%84%D9%87%D9%85-%D8%B9%D8%A8%D8%B1-%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA/%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D8%B7%D9%81%D9%84">> اذهب</a>
         </div>
-        <div class="card" data-lang="en">
-          <h3>Schneier on Security</h3>
-          <p>Expert security analysis.</p>
-          <a href="https://www.schneier.com" target="_blank">> GO</a>
+        <div class="card clickable-card" data-lang="ar">
+          <h3>ما هي الهندسة الاجتماعية</h3>
+          <p>تعرف على الهجمات اللي بتخدع الناس وإزاي تحمي نفسك.</p>
+          <a href="https://www.annajah.net/%D8%A7%D9%84%D9%87%D9%86%D8%AF%D8%B3%D8%A9-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9-%D9%85%D9%81%D9%87%D9%88%D9%85%D9%87%D8%A7-%D9%88%D9%85%D8%AE%D8%A7%D8%B7%D8%B1%D9%87%D8%A7-%D9%88%D9%83%D9%8A%D9%81%D9%8A%D8%A9-%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D9%85%D9%86%D9%87%D8%A7-article-39468">> اذهب</a>
         </div>
-        <div class="card" data-lang="ar">
-          <h3>ما هو أمن المعلومات وما أهميته؟</h3>
-          <p>مقدمة بسيطة عن أمن المعلومات.</p>
-          <a href="https://www.aljazeera.net/know/2020/10/25/ما-هو-أمن-المعلومات-وما-أهميته" target="_blank">> اذهب</a>
+        <div class="card clickable-card" data-lang="ar">
+          <h3>إزاي تحمي تيلفونك من الاختراق</h3>
+          <p>نصايح تخلّي موبايلك زي القلعة ضد الهكرز.</p>
+          <a href="https://www.bayut.com/mybayut/ar/%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D9%87%D8%A7%D8%AA%D9%81-%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82/">> اذهب</a>
         </div>
-        <div class="card" data-lang="ar">
-          <h3>التهديدات السيبرانية الشائعة</h3>
-          <p>تعرف على أشهر التهديدات.</p>
-          <a href="https://www.keepersecurity.com/ar_AE/threats/" target="_blank">> اذهب</a>
+        <div class="card clickable-card" data-lang="ar">
+          <h3>إزاي تبدأ في مجال أمن المعلومات</h3>
+          <p>بوست من بشمهندس إبراهيم حجازي هيوجهك من أول خطوة.</p>
+          <a href="https://www.facebook.com/Zigoo.eg/posts/pfbid02aKHYFph2kh3V1En2xi8jPNUDBmpsRnYssrnwCKXuNDhFX5PAScBduZeZDWhqL2XCl?_rdc=1&_rdr">> اذهب</a>
         </div>
-        <div class="card" data-lang="ar">
-          <h3>كيف تصنع كلمة مرور قوية؟</h3>
-          <p>نصائح لكلمات مرور آمنة.</p>
-          <a href="https://blog.google/outreach-initiatives/get-digital-ready/ar/كيف-تصنع-كلمة-مرور-قوية" target="_blank">> اذهب</a>
+
+        <!-- English Cards for Blogs -->
+        <div class="card clickable-card" data-lang="en">
+          <h3>Online Safety Tips for Parents</h3>
+          <p>Learn how to keep your children safe from online dangers.</p>
+          <a href="https://www.unicef.org/jordan/ar/%D9%86%D8%B5%D8%A7%D8%A6%D8%AD-%D9%84%D8%A3%D9%88%D9%84%D9%8A%D8%A7%D8%A1-%D8%A7%D9%84%D8%A3%D9%85%D9%88%D8%B1-%D9%84%D9%84%D8%AD%D9%81%D8%A7%D8%B8-%D8%B9%D9%84%D9%89-%D8%B3%D9%84%D8%A7%D9%85%D8%A9-%D8%A3%D8%B7%D9%81%D8%A7%D9%84%D9%87%D9%85-%D8%B9%D8%A8%D8%B1-%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA/%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D8%B7%D9%81%D9%84">> Go</a>
+        </div>
+        <div class="card clickable-card" data-lang="en">
+          <h3>What is Social Engineering?</h3>
+          <p>Understand how attackers trick people and how to protect yourself.</p>
+          <a href="https://www.annajah.net/%D8%A7%D9%84%D9%87%D9%86%D8%AF%D8%B3%D8%A9-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9-%D9%85%D9%81%D9%87%D9%88%D9%85%D9%87%D8%A7-%D9%88%D9%85%D8%AE%D8%A7%D8%B7%D8%B1%D9%87%D8%A7-%D9%88%D9%83%D9%8A%D9%81%D9%8A%D8%A9-%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D9%85%D9%86%D9%87%D8%A7-article-39468">> Go</a>
+        </div>
+        <div class="card clickable-card" data-lang="en">
+          <h3>How to Protect Your Phone from Hacking</h3>
+          <p>Tips to make your phone as secure as a fortress.</p>
+          <a href="https://www.bayut.com/mybayut/ar/%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D9%87%D8%A7%D8%AA%D9%81-%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82/">> Go</a>
+        </div>
+        <div class="card clickable-card" data-lang="en">
+          <h3>How to Start in Cybersecurity</h3>
+          <p>A post by Eng. Ibrahim Hejazi to guide you from the very first step.</p>
+          <a href="https://www.facebook.com/Zigoo.eg/posts/pfbid02aKHYFph2kh3V1En2xi8jPNUDBmpsRnYssrnwCKXuNDhFX5PAScBduZeZDWhqL2XCl?_rdc=1&_rdr">> Go</a>
         </div>
       </div>
+    </section>
 
-      <h2 data-en="Cybersecurity Courses" data-ar="دورات أمن المعلومات">Cybersecurity Courses</h2>
+    <!-- New Courses Section -->
+    <section id="courses">
+      <h2 data-en="Cybersecurity Courses" data-ar="دورات الأمن السيبراني">Cybersecurity Courses</h2>
       <div class="card-container">
-        <div class="card" data-lang="en">
-          <h3>CS50's Introduction to Cybersecurity</h3>
-          <p>Free intro course from Harvard via edX.</p>
-          <a href="https://www.edx.org/learn/cybersecurity/harvard-university-cs50-s-introduction-to-cybersecurity" target="_blank">> GO</a>
+        <!-- Arabic Cards for Courses -->
+        <div class="card clickable-card" data-lang="ar">
+          <h3>الأمن السيبراني للجميع من ITI Mahara Tech</h3>
+          <p>تعلم أساسيات الأمن السيبراني مع دورة من Mahara Tech.</p>
+          <a href="https://maharatech.gov.eg/mod/page/view.php?id=14091">> اذهب</a>
         </div>
-        <div class="card" data-lang="en">
-          <h3>Cybersecurity Fundamentals</h3>
-          <p>Free basics from Cybrary.</p>
-          <a href="https://www.cybrary.it/course/cybersecurity-fundamentals/" target="_blank">> GO</a>
+        <div class="card clickable-card" data-lang="ar">
+          <h3>مسار المحلل الأمني المبتدئ من Cisco Networking Academy | NetCad</h3>
+          <p>ابدأ مسارك المهني في الأمن السيبراني مع دورة من أكاديمية Cisco.</p>
+          <a href="https://www.netacad.com/career-paths/cybersecurity?courseLang=en-US">> اذهب</a>
         </div>
-        <div class="card" data-lang="en">
-          <h3>Introduction to Cybersecurity</h3>
-          <p>Free course by Cisco Networking Academy.</p>
-          <a href="https://www.netacad.com/courses/cybersecurity/introduction-cybersecurity" target="_blank">> GO</a>
+        <div class="card clickable-card" data-lang="ar">
+          <h3>دورة بروفيسور ميسر لتحضير Security+ SY0-701</h3>
+          <p>دورة مجانية لتحضير شهادة Security+ مع بروفيسور ميسر.</p>
+          <a href="https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/">> اذهب</a>
         </div>
-        <div class="card" data-lang="en">
-          <h3>Google Cybersecurity Certificate</h3>
-          <p>Free trial from Google via Coursera.</p>
-          <a href="https://www.coursera.org/professional-certificates/google-cybersecurity" target="_blank">> GO</a>
+        <div class="card clickable-card" data-lang="ar">
+          <h3>دورة هارفارد CS50 للأمن السيبراني</h3>
+          <p>استكشف مبادئ الأمن السيبراني مع دورة CS50 من هارفارد.</p>
+          <a href="https://cs50.harvard.edu/cybersecurity/2023/">> اذهب</a>
         </div>
-        <div class="card" data-lang="en">
-          <h3>Cybersecurity Essentials</h3>
-          <p>Free course from Open University via FutureLearn.</p>
-          <a href="https://www.futurelearn.com/courses/cyber-security-essentials" target="_blank">> GO</a>
+
+        <!-- English Cards for Courses -->
+        <div class="card clickable-card" data-lang="en">
+          <h3>CyberSecurity for Everyone from ITI Mahara Tech</h3>
+          <p>Learn the basics of cybersecurity with this free course from Mahara Tech.</p>
+          <a href="https://maharatech.gov.eg/mod/page/view.php?id=14091">> Go</a>
         </div>
-        <div class="card" data-lang="ar">
-          <h3>كيف تبدأ مسيرتك في أمن المعلومات؟</h3>
-          <p>دليل مجاني للمبتدئين في المجال.</p>
-          <a href="https://blog.arabic.blog.linkedin.com/ar/articles/how-to-start-your-career-in-cybersecurity" target="_blank">> اذهب</a>
+        <div class="card clickable-card" data-lang="en">
+          <h3>Junior CyberSecurity Analyst Path from Cisco Networking Academy | NetCad</h3>
+          <p>Kickstart your cybersecurity career with Cisco’s comprehensive pathway.</p>
+          <a href="https://www.netacad.com/career-paths/cybersecurity?courseLang=en-US">> Go</a>
         </div>
-        <div class="card" data-lang="ar">
-          <h3>دليل المبتدئين لتعلم أمن المعلومات</h3>
-          <p>مصادر تعليمية بسيطة ومجانية.</p>
-          <a href="https://www.edraak.org/ar/blog/دليل-المبتدئين-لتعلم-أمن-المعلومات" target="_blank">> اذهب</a>
+        <div class="card clickable-card" data-lang="en">
+          <h3>Professor Messer’s CompTIA SY0-701 Security+ Training Course</h3>
+          <p>Prepare for the Security+ exam with Professor Messer’s expert training course.</p>
+          <a href="https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/">> Go</a>
+        </div>
+        <div class="card clickable-card" data-lang="en">
+          <h3>Harvard CS50 Cybersecurity Course</h3>
+          <p>Discover cybersecurity fundamentals with Harvard’s CS50 course.</p>
+          <a href="https://cs50.harvard.edu/cybersecurity/2023/">> Go</a>
         </div>
       </div>
     </section>
@@ -106,7 +144,6 @@
       <button id="nextBtn" style="display:none;" data-en="NEXT" data-ar="التالي">NEXT</button>
     </section>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
