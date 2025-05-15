@@ -1,149 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Amanak</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amanak - Cybersecurity Awareness</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <!-- Fixed Top Navigation Bar -->
-  <nav class="top-nav">
-    <div class="nav-links">
-      <a href="#dailyTip" data-en="TIP" data-ar="نصيحة">TIP</a>
-      <a href="#resourceLibrary" data-en="Blogs" data-ar=" مقالات ">RESOURCES</a>
-      <a href="#courses" data-en="COURSES" data-ar="الدورات">COURSES</a>
-      <a href="#quizSection" data-en="QUIZ" data-ar="اختبار">QUIZ</a>
+<body dir="ltr">
+    <nav class="top-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-brand">
+            <a href="#" data-en="Amanak" data-ar="أمانك" class="logo-link">Amanak</a>
+        </div>
+        <div class="nav-links">
+            <a href="#dailyTip" data-en="TIP" data-ar="نصيحة">TIP</a>
+            <a href="#resourceLibrary" data-en="Blogs" data-ar="مقالات">BLOGS</a>
+            <a href="#courses" data-en="Courses" data-ar="الدورات">COURSES</a>
+            <a href="#quizSection" data-en="Quiz" data-ar="اختبار">QUIZ</a>
+            <a href="#passwordChecker" data-en="Password Checker" data-ar="مدقق كلمة المرور">Password Checker</a>
+        </div>
+        <div class="nav-controls">
+            <button id="lang-toggle" class="control-btn" aria-label="Toggle language" data-en-label="Switch to Arabic" data-ar-label="Switch to English">EN</button>
+            <button id="mode-toggle" class="control-btn" aria-label="Toggle dark/light mode" data-en-label-light="Switch to Dark Mode" data-ar-label-light="التحول إلى الوضع الداكن" data-en-label-dark="Switch to Light Mode" data-ar-label-dark="التحول إلى الوضع الفاتح">Light Mode</button>
+        </div>
+    </nav>
+
+    <main class="container" role="main">
+        <header>
+            <h1 data-en="Amanak Cybersecurity Awareness" data-ar="أمانك للتوعية بالأمن السيبراني">Amanak Cybersecurity Awareness</h1>
+            <p data-en="Unleashing potential: Transforming beginners into tomorrow's cybersecurity pioneers."
+               data-ar="إطلاق العنان للإمكانات: تحويل المبتدئين إلى رواد الأمن السيبراني في المستقبل.">
+               Unleashing potential: Transforming beginners into tomorrow's cybersecurity pioneers.
+            </p>
+        </header>
+
+        <section id="dailyTip" role="region" aria-labelledby="dailyTipHeading">
+            <h2 id="dailyTipHeading" class="section-title visually-hidden" data-en="Tip of the Day" data-ar="نصيحة اليوم">Tip of the Day</h2>
+            <div class="tip-content">
+                <strong data-en="Tip of the Day:" data-ar="نصيحة اليوم:">Tip of the Day:</strong>
+                <span id="tipText" aria-live="polite">Loading...</span>
+            </div>
+            <button id="refreshTipBtn" class="styled-button" data-en="REFRESH TIP" data-ar="تحديث النصيحة">REFRESH TIP</button>
+        </section>
+
+        <section id="resourceLibrary" role="region" aria-labelledby="resourceLibraryHeading">
+            <h2 id="resourceLibraryHeading" class="section-title" data-en="Cybersecurity Blogs" data-ar="مدونات الأمن السيبراني">Cybersecurity Blogs</h2>
+            <div class="card-container" id="blogCardContainer">
+                <div class="card-placeholder" aria-hidden="true">
+                    <div class="placeholder-content"></div>
+                    <div class="placeholder-content short"></div>
+                    <div class="placeholder-button"></div>
+                </div>
+                <div class="card-placeholder" aria-hidden="true">
+                    <div class="placeholder-content"></div>
+                    <div class="placeholder-content short"></div>
+                    <div class="placeholder-button"></div>
+                </div>
+                <div class="card-placeholder" aria-hidden="true">
+                    <div class="placeholder-content"></div>
+                    <div class="placeholder-content short"></div>
+                    <div class="placeholder-button"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses" role="region" aria-labelledby="coursesHeading">
+            <h2 id="coursesHeading" class="section-title" data-en="Cybersecurity Courses" data-ar="دورات الأمن السيبراني">Cybersecurity Courses</h2>
+            <div class="card-container" id="courseCardContainer">
+                <div class="card-placeholder" aria-hidden="true">
+                    <div class="placeholder-content"></div>
+                    <div class="placeholder-content short"></div>
+                    <div class="placeholder-button"></div>
+                </div>
+                <div class="card-placeholder" aria-hidden="true">
+                    <div class="placeholder-content"></div>
+                    <div class="placeholder-content short"></div>
+                    <div class="placeholder-button"></div>
+                </div>
+                <div class="card-placeholder" aria-hidden="true">
+                    <div class="placeholder-content"></div>
+                    <div class="placeholder-content short"></div>
+                    <div class="placeholder-button"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quizSection" role="region" aria-labelledby="quizSectionHeading">
+            <h2 id="quizSectionHeading" class="section-title" data-en="Quick Cybersecurity Quiz" data-ar="اختبار سريع في الأمن السيبراني">Quick Cybersecurity Quiz</h2>
+            <div id="quizProgress" class="quiz-progress" aria-live="polite"></div>
+            <div id="quizContainer" aria-live="polite">
+                <p data-en="Loading quiz..." data-ar="جارٍ تحميل الاختبار...">Loading quiz...</p>
+            </div>
+            <div id="quizFeedback" class="quiz-feedback" aria-live="assertive"></div>
+            <button id="nextBtn" class="styled-button" style="display:none;" data-en="NEXT" data-ar="التالي">NEXT</button>
+        </section>
+
+        <section id="passwordChecker" role="region" aria-labelledby="passwordCheckerHeading">
+            <h2 id="passwordCheckerHeading" class="section-title" data-en="Check Your Password Strength" data-ar="تحقق من قوة كلمة المرور الخاصة بك">Check Your Password Strength</h2>
+            <div class="password-checker-container">
+                <input type="password" id="passwordInput" dir="ltr" data-en-placeholder="Enter your password" data-ar-placeholder="أدخل كلمة المرور الخاصة بك" autocomplete="off">
+                <button id="checkPasswordBtn" class="styled-button" data-en="CHECK" data-ar="تحقق">CHECK</button>
+                <div id="passwordFeedback" class="password-feedback" aria-live="assertive"></div>
+            </div>
+        </section>
+
+        <div class="hibp-prompt" style="margin-top: 25px; text-align: center; padding: 15px; background-color: var(--card-bg-highlight, var(--card-bg)); border: 1px solid var(--border-color); border-radius: var(--border-radius-md);">
+            <p style="margin-bottom: 10px;" data-en="Want to check if your email or phone has been in a data breach?" data-ar="هل تريد التحقق مما إذا كان بريدك الإلكتروني أو هاتفك قد ظهر في اختراق بيانات؟">
+                Want to check if your email or phone has been in a data breach?
+            </p>
+            <a href="https://haveibeenpwned.com/" target="_blank" rel="noopener noreferrer" class="styled-button"
+            data-en="Visit Have I Been Pwned?"
+            data-ar="قم بزيارة Have I Been Pwned?">
+            Visit Have I Been Pwned?
+            </a>
+            <p style="font-size: 0.85rem; margin-top: 10px; opacity: 0.8;" data-en="This is an external service to check for data breaches." data-ar="هذه خدمة خارجية للتحقق من اختراقات البيانات.">
+                This is an external service to check for data breaches.
+            </p>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="currentYear">2024</span> Amanak Cybersecurity Awareness. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
+        <p><a href="#aboutAmanakModal" id="openAboutModal" data-en="About Amanak" data-ar="عن أمانك">About Amanak</a></p>
+    </footer>
+
+    <div id="aboutAmanakModal" class="modal" role="dialog" aria-labelledby="aboutModalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <button id="closeAboutModal" class="modal-close-btn" aria-label="Close modal" data-en-aria-label="Close modal" data-ar-aria-label="إغلاق النافذة">×</button>
+            <h3 id="aboutModalTitle" data-en="About Amanak" data-ar="عن أمانك">About Amanak</h3>
+            <p data-en="Amanak is dedicated to raising cybersecurity awareness among beginners and helping them become the pioneers of tomorrow. We provide tips, resources, and quizzes to make learning about cybersecurity accessible and engaging."
+               data-ar="أمانك مكرس لرفع مستوى الوعي بالأمن السيبراني بين المبتدئين ومساعدتهم ليصبحوا رواد الغد. نقدم نصائح وموارد واختبارات لجعل التعلم عن الأمن السيبراني متاحًا وجذابًا.">
+               Amanak is dedicated to raising cybersecurity awareness among beginners and helping them become the pioneers of tomorrow. We provide tips, resources, and quizzes to make learning about cybersecurity accessible and engaging.
+            </p>
+        </div>
     </div>
-    <div class="nav-controls">
-      <!-- Single Language Toggle Button -->
-      <button id="lang-toggle" class="control-btn">EN</button>
-      <!-- Dark/Light Mode Toggle Button -->
-      <button id="mode-toggle" class="control-btn">Light Mode</button>
-    </div>
-  </nav>
 
-  <div class="container">
-    <header>
-      <h1 data-en="Amank" data-ar="أمانك">Amank Cybersecurity Awareness</h1>
-      <p data-en="Unleashing potential: Transforming beginners into tomorrow's cybersecurity pioneers."
-         data-ar="إطلاق العنان للإمكانات: تحويل المبتدئين إلى رواد الأمن السيبراني في المستقبل">
-         Unleashing potential: Transforming beginners into tomorrow's cybersecurity pioneers.
-      </p>
-    </header>
+    <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Scroll to top" title="Go to top" data-en-aria-label="Scroll to top" data-ar-aria-label="الانتقال إلى الأعلى">↑</button>
 
-    <section id="dailyTip">
-      <strong data-en="Tip of the Day:" data-ar="نصيحة اليوم:">Tip of the Day:</strong>
-      <span id="tipText">Loading...</span>
-      <button onclick="loadDailyTip()" data-en="REFRESH" data-ar="تحديث">REFRESH</button>
-    </section>
+    <noscript>
+        <div class="noscript-warning">
+            <p data-en="This website requires JavaScript to function properly. Please enable JavaScript in your browser settings."
+               data-ar="يتطلب هذا الموقع JavaScript ليعمل بشكل صحيح. يرجى تمكين JavaScript في إعدادات المتصفح الخاص بك.">
+               This website requires JavaScript to function properly. Please enable JavaScript in your browser settings.
+            </p>
+        </div>
+    </noscript>
 
-    <section id="resourceLibrary">
-      <h2 data-en="Cybersecurity Blogs" data-ar="مدونات أمن المعلومات">Cybersecurity Blogs</h2>
-      <div class="card-container">
-        <!-- Arabic Cards for Blogs -->
-        <div class="card clickable-card" data-lang="ar">
-          <h3>نصائح للآباء لحماية أبنائهم على الإنترنت</h3>
-          <p>إزاي تحافظ على سلامة أطفالك من مخاطر الإنترنت.</p>
-          <a href="https://www.unicef.org/jordan/ar/%D9%86%D8%B5%D8%A7%D8%A6%D8%AD-%D9%84%D8%A3%D9%88%D9%84%D9%8A%D8%A7%D8%A1-%D8%A7%D9%84%D8%A3%D9%85%D9%88%D8%B1-%D9%84%D9%84%D8%AD%D9%81%D8%A7%D8%B8-%D8%B9%D9%84%D9%89-%D8%B3%D9%84%D8%A7%D9%85%D8%A9-%D8%A3%D8%B7%D9%81%D8%A7%D9%84%D9%87%D9%85-%D8%B9%D8%A8%D8%B1-%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA/%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D8%B7%D9%81%D9%84">> اذهب</a>
-        </div>
-        <div class="card clickable-card" data-lang="ar">
-          <h3>ما هي الهندسة الاجتماعية</h3>
-          <p>تعرف على الهجمات اللي بتخدع الناس وإزاي تحمي نفسك.</p>
-          <a href="https://www.annajah.net/%D8%A7%D9%84%D9%87%D9%86%D8%AF%D8%B3%D8%A9-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9-%D9%85%D9%81%D9%87%D9%88%D9%85%D9%87%D8%A7-%D9%88%D9%85%D8%AE%D8%A7%D8%B7%D8%B1%D9%87%D8%A7-%D9%88%D9%83%D9%8A%D9%81%D9%8A%D8%A9-%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D9%85%D9%86%D9%87%D8%A7-article-39468">> اذهب</a>
-        </div>
-        <div class="card clickable-card" data-lang="ar">
-          <h3>إزاي تحمي تيلفونك من الاختراق</h3>
-          <p>نصايح تخلّي موبايلك زي القلعة ضد الهكرز.</p>
-          <a href="https://www.bayut.com/mybayut/ar/%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D9%87%D8%A7%D8%AA%D9%81-%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82/">> اذهب</a>
-        </div>
-        <div class="card clickable-card" data-lang="ar">
-          <h3>إزاي تبدأ في مجال أمن المعلومات</h3>
-          <p>بوست من بشمهندس إبراهيم حجازي هيوجهك من أول خطوة.</p>
-          <a href="https://www.facebook.com/Zigoo.eg/posts/pfbid02aKHYFph2kh3V1En2xi8jPNUDBmpsRnYssrnwCKXuNDhFX5PAScBduZeZDWhqL2XCl?_rdc=1&_rdr">> اذهب</a>
-        </div>
-
-        <!-- English Cards for Blogs -->
-        <div class="card clickable-card" data-lang="en">
-          <h3>Online Safety Tips for Parents</h3>
-          <p>Learn how to keep your children safe from online dangers.</p>
-          <a href="https://www.unicef.org/jordan/ar/%D9%86%D8%B5%D8%A7%D8%A6%D8%AD-%D9%84%D8%A3%D9%88%D9%84%D9%8A%D8%A7%D8%A1-%D8%A7%D9%84%D8%A3%D9%85%D9%88%D8%B1-%D9%84%D9%84%D8%AD%D9%81%D8%A7%D8%B8-%D8%B9%D9%84%D9%89-%D8%B3%D9%84%D8%A7%D9%85%D8%A9-%D8%A3%D8%B7%D9%81%D8%A7%D9%84%D9%87%D9%85-%D8%B9%D8%A8%D8%B1-%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA/%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D8%B7%D9%81%D9%84">> Go</a>
-        </div>
-        <div class="card clickable-card" data-lang="en">
-          <h3>What is Social Engineering?</h3>
-          <p>Understand how attackers trick people and how to protect yourself.</p>
-          <a href="https://www.annajah.net/%D8%A7%D9%84%D9%87%D9%86%D8%AF%D8%B3%D8%A9-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9-%D9%85%D9%81%D9%87%D9%88%D9%85%D9%87%D8%A7-%D9%88%D9%85%D8%AE%D8%A7%D8%B7%D8%B1%D9%87%D8%A7-%D9%88%D9%83%D9%8A%D9%81%D9%8A%D8%A9-%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D9%85%D9%86%D9%87%D8%A7-article-39468">> Go</a>
-        </div>
-        <div class="card clickable-card" data-lang="en">
-          <h3>How to Protect Your Phone from Hacking</h3>
-          <p>Tips to make your phone as secure as a fortress.</p>
-          <a href="https://www.bayut.com/mybayut/ar/%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D9%87%D8%A7%D8%AA%D9%81-%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82/">> Go</a>
-        </div>
-        <div class="card clickable-card" data-lang="en">
-          <h3>How to Start in Cybersecurity</h3>
-          <p>A post by Eng. Ibrahim Hejazi to guide you from the very first step.</p>
-          <a href="https://www.facebook.com/Zigoo.eg/posts/pfbid02aKHYFph2kh3V1En2xi8jPNUDBmpsRnYssrnwCKXuNDhFX5PAScBduZeZDWhqL2XCl?_rdc=1&_rdr">> Go</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- New Courses Section -->
-    <section id="courses">
-      <h2 data-en="Cybersecurity Courses" data-ar="دورات الأمن السيبراني">Cybersecurity Courses</h2>
-      <div class="card-container">
-        <!-- Arabic Cards for Courses -->
-        <div class="card clickable-card" data-lang="ar">
-          <h3>الأمن السيبراني للجميع من ITI Mahara Tech</h3>
-          <p>تعلم أساسيات الأمن السيبراني مع دورة من Mahara Tech.</p>
-          <a href="https://maharatech.gov.eg/mod/page/view.php?id=14091">> اذهب</a>
-        </div>
-        <div class="card clickable-card" data-lang="ar">
-          <h3>مسار المحلل الأمني المبتدئ من Cisco Networking Academy | NetCad</h3>
-          <p>ابدأ مسارك المهني في الأمن السيبراني مع دورة من أكاديمية Cisco.</p>
-          <a href="https://www.netacad.com/career-paths/cybersecurity?courseLang=en-US">> اذهب</a>
-        </div>
-        <div class="card clickable-card" data-lang="ar">
-          <h3>دورة بروفيسور ميسر لتحضير Security+ SY0-701</h3>
-          <p>دورة مجانية لتحضير شهادة Security+ مع بروفيسور ميسر.</p>
-          <a href="https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/">> اذهب</a>
-        </div>
-        <div class="card clickable-card" data-lang="ar">
-          <h3>دورة هارفارد CS50 للأمن السيبراني</h3>
-          <p>استكشف مبادئ الأمن السيبراني مع دورة CS50 من هارفارد.</p>
-          <a href="https://cs50.harvard.edu/cybersecurity/2023/">> اذهب</a>
-        </div>
-
-        <!-- English Cards for Courses -->
-        <div class="card clickable-card" data-lang="en">
-          <h3>CyberSecurity for Everyone from ITI Mahara Tech</h3>
-          <p>Learn the basics of cybersecurity with this free course from Mahara Tech.</p>
-          <a href="https://maharatech.gov.eg/mod/page/view.php?id=14091">> Go</a>
-        </div>
-        <div class="card clickable-card" data-lang="en">
-          <h3>Junior CyberSecurity Analyst Path from Cisco Networking Academy | NetCad</h3>
-          <p>Kickstart your cybersecurity career with Cisco’s comprehensive pathway.</p>
-          <a href="https://www.netacad.com/career-paths/cybersecurity?courseLang=en-US">> Go</a>
-        </div>
-        <div class="card clickable-card" data-lang="en">
-          <h3>Professor Messer’s CompTIA SY0-701 Security+ Training Course</h3>
-          <p>Prepare for the Security+ exam with Professor Messer’s expert training course.</p>
-          <a href="https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/">> Go</a>
-        </div>
-        <div class="card clickable-card" data-lang="en">
-          <h3>Harvard CS50 Cybersecurity Course</h3>
-          <p>Discover cybersecurity fundamentals with Harvard’s CS50 course.</p>
-          <a href="https://cs50.harvard.edu/cybersecurity/2023/">> Go</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="quizSection">
-      <h2 data-en="Quick Cybersecurity Quiz" data-ar="اختبار سريع في أمن المعلومات">Quick Cybersecurity Quiz</h2>
-      <div id="quizContainer"></div>
-      <div id="quizFeedback"></div>
-      <button id="nextBtn" style="display:none;" data-en="NEXT" data-ar="التالي">NEXT</button>
-    </section>
-  </div>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
