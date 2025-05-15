@@ -1,260 +1,799 @@
 /* Define CSS custom properties for both themes */
 :root {
-    --bg-color: #0d0d0d;
+    --bg-color: #121212; /* Darker background */
     --text-color: #e0e0e0;
-    --accent: #00ff99;
-    --hover-accent: #00cc88;
-    --card-bg: #1a1a1a;
-    --border-color: #333;
-  }
-  
-  body.light-mode {
-    --bg-color: #f5f5f5;
+    --primary-accent: #00ff99; /* Keep vibrant accent */
+    --primary-accent-darker: #00cc80;
+    --secondary-accent: #00b377;
+    --card-bg: #1e1e1e; /* Slightly lighter card background */
+    --border-color: #333333;
+    --shadow-color: rgba(0, 255, 153, 0.1);
+    --error-color: #ff4d4d;
+    --success-color: var(--primary-accent);
+    --font-primary: 'Inter', 'Courier Prime', Courier, monospace; /* Added Inter for better readability */
+    --font-mono: 'Courier Prime', Courier, monospace;
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --placeholder-bg: #2a2a2a;
+    --placeholder-highlight: #3a3a3a;
+}
+
+body.light-mode {
+    --bg-color: #f4f7f9; /* Softer light background */
     --text-color: #333333;
-    --accent: #008080;
-    --hover-accent: #006666;
+    --primary-accent: #008080; /* Teal accent for light mode */
+    --primary-accent-darker: #006666;
+    --secondary-accent: #007373;
     --card-bg: #ffffff;
-    --border-color: #cccccc;
-  }
-  
-  * {
+    --border-color: #d1d9e0; /* Softer border */
+    --shadow-color: rgba(0, 128, 128, 0.1);
+    --error-color: #d93636;
+    --placeholder-bg: #e0e0e0;
+    --placeholder-highlight: #f0f0f0;
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Courier New', Courier, monospace;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.4;
-    padding: 15px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  /* Fixed Top Navigation Bar */
-  .top-nav {
+    line-height: 1.6; /* Improved line height */
+    padding-top: 80px; /* Space for fixed nav */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Visually Hidden Class for Accessibility */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Fixed Top Navigation Bar */
+.top-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 10px 15px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    position: sticky;
+    border-bottom: 1px solid var(--border-color); /* Border on bottom only */
+    padding: 12px 25px; /* Increased padding */
+    position: fixed; /* Changed to fixed */
     top: 0;
-    z-index: 100;
-  }
-  
-  .nav-links a {
-    color: var(--accent);
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it's on top */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.nav-brand .logo-link {
+    font-family: var(--font-mono);
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary-accent);
     text-decoration: none;
-    margin: 0 10px;
-    text-shadow: 0 0 5px var(--accent);
-    transition: color 0.2s;
-  }
-  
-  .nav-links a:hover { 
-    color: var(--hover-accent);
-  }
-  
-  .nav-controls .control-btn {
-    margin-left: 10px;
-    padding: 5px 10px;
-    background-color: var(--accent);
-    color: var(--bg-color);
-    border: none;
-    border-radius: 4px;
+    text-shadow: 0 0 8px var(--shadow-color);
+}
+
+.nav-links a {
+    color: var(--text-color); /* More subtle link color, accent on hover */
+    text-decoration: none;
+    margin: 0 12px; /* Increased margin */
+    font-weight: 600; /* Bolder links */
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-accent);
+    transition: width 0.3s ease;
+}
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+    width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    color: var(--primary-accent);
+    text-shadow: 0 0 5px var(--shadow-color);
+    outline: none; /* Custom focus below */
+}
+/* Custom focus for nav links */
+.nav-links a:focus-visible {
+    outline: 2px solid var(--primary-accent);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-sm);
+}
+
+
+.nav-controls .control-btn {
+    margin-left: 12px;
+    padding: 8px 15px; /* Increased padding */
+    background-color: transparent; /* Transparent background */
+    color: var(--primary-accent);
+    border: 1px solid var(--primary-accent); /* Bordered button */
+    border-radius: var(--border-radius-md);
     cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .nav-controls .control-btn:hover {
-    background-color: var(--hover-accent);
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  header {
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.nav-controls .control-btn:hover,
+.nav-controls .control-btn:focus {
+    background-color: var(--primary-accent);
+    color: var(--bg-color); /* Text color changes to background for contrast */
+    transform: translateY(-1px);
+    outline: none;
+}
+.nav-controls .control-btn:focus-visible {
+    outline: 2px solid var(--primary-accent-darker);
+    outline-offset: 2px;
+}
+
+
+.container {
+    max-width: 1100px; /* Slightly reduced max-width */
+    margin: 20px auto; /* Added top margin */
+    padding: 0 20px; /* Padding for smaller screens */
+}
+
+header {
     text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  h1, h2 {
-    text-align: center;
-    color: var(--accent);
-    text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+    margin-bottom: 40px; /* Increased margin */
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 2.8rem; /* Larger H1 */
+    color: var(--primary-accent);
+    text-shadow: 0 0 12px var(--shadow-color), 0 0 20px var(--shadow-color);
     margin-bottom: 15px;
-  }
-  
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
-  
-  p { 
+    font-family: var(--font-mono);
+}
+
+header p {
+    font-size: 1.1rem; /* Slightly larger paragraph */
+    color: var(--text-color);
+    margin-bottom: 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section {
+    padding: 30px 0; /* Padding for sections */
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color); /* Separator line */
+}
+section:last-of-type {
+    border-bottom: none;
+}
+
+
+.section-title {
+    font-size: 2rem; /* Consistent section title size */
+    color: var(--primary-accent);
+    text-shadow: 0 0 10px var(--shadow-color);
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: var(--font-mono);
+}
+
+/* Styled Button (general purpose) */
+.styled-button {
+    padding: 10px 20px;
+    background-color: var(--primary-accent);
+    color: var(--bg-color); /* Ensure contrast */
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: inline-block; /* Allows margin auto for centering if needed */
+    text-decoration: none; /* For <a> styled as buttons */
+}
+
+.styled-button:hover,
+.styled-button:focus {
+    background-color: var(--primary-accent-darker);
+    transform: translateY(-2px);
+    outline: none;
+}
+.styled-button:focus-visible {
+    outline: 2px solid var(--primary-accent-darker);
+    outline-offset: 2px;
+}
+
+
+#dailyTip {
+    background-color: var(--card-bg);
+    padding: 25px; /* Increased padding */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    text-align: center;
+    margin-bottom: 40px; /* Increased margin */
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+#dailyTip .tip-content {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+#dailyTip strong {
+    color: var(--primary-accent);
+    font-weight: 700;
+}
+#dailyTip #refreshTipBtn { /* Uses .styled-button now */
+    margin-top: 10px;
+}
+
+
+.card-container {
+    display: grid; /* Using grid for more robust layout */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+    gap: 25px; /* Increased gap */
+    margin-bottom: 25px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 20px; /* Increased padding */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* For better internal alignment */
+    flex-direction: column;
+    justify-content: space-between; /* Pushes link to bottom */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.card:hover, .card:focus-within {
+    transform: translateY(-5px); /* More pronounced hover */
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.card h3 {
+    color: var(--text-color);
+    font-size: 1.25rem; /* Larger card titles */
+    margin-bottom: 12px;
+    font-family: var(--font-mono);
+}
+
+.card p {
+    font-size: 0.95rem; /* Slightly larger card text */
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allows paragraph to take available space */
+}
+
+.card .card-link { /* Replaces generic 'a' styling for cards */
+    display: inline-block;
+    padding: 10px 18px; /* Larger link button */
+    background-color: var(--secondary-accent); /* Different accent for card links */
+    color: #fff; /* White text for these buttons */
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-align: center;
+    margin-top: auto; /* Pushes to bottom if content is short */
+}
+
+.card .card-link:hover,
+.card .card-link:focus {
+    background-color: var(--primary-accent-darker);
+    transform: translateY(-2px);
+    outline: none;
+}
+.card .card-link:focus-visible {
+     outline: 2px solid var(--primary-accent-darker);
+     outline-offset: 2px;
+}
+
+/* Card Placeholder Styles */
+.card-placeholder {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px; /* Approximate card height */
+}
+.card-placeholder .placeholder-content,
+.card-placeholder .placeholder-button {
+    background: linear-gradient(90deg, var(--placeholder-bg) 25%, var(--placeholder-highlight) 50%, var(--placeholder-bg) 75%);
+    background-size: 200% 100%;
+    animation: placeholderShimmer 1.5s infinite linear;
+    border-radius: var(--border-radius-sm);
+}
+.card-placeholder .placeholder-content {
+    height: 1.25rem; /* Approx h3 height */
+    margin-bottom: 12px;
+}
+.card-placeholder .placeholder-content.short {
+    height: 0.95rem; /* Approx p height */
+    width: 80%;
+    margin-bottom: 15px;
+}
+.card-placeholder .placeholder-content:nth-child(2) { /* Second line of p */
+    width: 60%;
+}
+.card-placeholder .placeholder-button {
+    height: 38px; /* Approx button height */
+    width: 120px; /* Approx button width */
+    margin-top: auto;
+}
+
+@keyframes placeholderShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+
+#quizSection {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    max-width: 700px; /* Wider quiz container */
+    margin: 40px auto;
+    text-align: center;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+#quizProgress {
+    font-size: 0.9rem;
     color: var(--text-color);
     margin-bottom: 15px;
-  }
-  
-  #dailyTip {
+    font-weight: 600;
+}
+
+#quizContainer p { /* Question text */
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+#quizContainer .quiz-option-btn { /* Specific class for quiz options */
+    display: block;
+    width: 100%; /* Full width options */
+    max-width: 400px; /* Max width for very wide screens */
+    margin: 10px auto; /* Centered options */
+    padding: 12px; /* More padding */
+    background-color: var(--bg-color); /* Button background matches page background */
+    color: var(--primary-accent);
+    border: 1px solid var(--primary-accent);
+    border-radius: var(--border-radius-md);
+    font-family: var(--font-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
+    text-align: left; /* Align text to left for options */
+    padding-left: 20px;
+}
+
+#quizContainer .quiz-option-btn:hover,
+#quizContainer .quiz-option-btn:focus {
+    background-color: var(--primary-accent);
+    color: var(--bg-color);
+    transform: translateX(5px);
+    outline: none;
+}
+#quizContainer .quiz-option-btn:focus-visible {
+    outline: 2px solid var(--primary-accent-darker);
+    outline-offset: 1px;
+}
+
+
+#quizContainer .quiz-option-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background-color: var(--border-color); /* Different disabled style */
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+#quizContainer .quiz-option-btn.correct {
+    background-color: var(--success-color) !important;
+    color: var(--bg-color) !important;
+    border-color: var(--success-color) !important;
+}
+#quizContainer .quiz-option-btn.incorrect {
+    background-color: var(--error-color) !important;
+    color: #fff !important; /* White text on error red */
+    border-color: var(--error-color) !important;
+}
+
+
+#quizFeedback {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+#quizFeedback .feedback-text {
+    padding: 10px;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 10px;
+}
+#quizFeedback .feedback-text.correct {
+    color: var(--success-color);
+}
+#quizFeedback .feedback-text.incorrect {
+    color: var(--error-color);
+}
+#quizFeedback .explanation {
+    font-size: 0.95rem;
+    font-weight: normal;
+    color: var(--text-color);
+    margin-top: 8px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.1); /* Subtle background for explanation */
+    border-left: 3px solid var(--secondary-accent);
+    border-radius: var(--border-radius-sm);
+    text-align: left;
+}
+body.light-mode #quizFeedback .explanation {
+    background-color: rgba(0,0,0,0.03);
+}
+
+
+#nextBtn { /* Uses .styled-button now */
+    margin-top: 20px;
+}
+
+/* RTL Specific Adjustments */
+body[dir="rtl"] {
+    text-align: right;
+}
+body[dir="rtl"] .top-nav {
+    flex-direction: row-reverse; /* Reverse main items */
+}
+body[dir="rtl"] .nav-brand {
+    margin-right: auto; /* Push brand to the right */
+    margin-left: 0;
+}
+body[dir="rtl"] .nav-links {
+    /* Order of links is handled by flex, margin adjustments might be needed if specific order is critical */
+    margin-right: auto;
+    margin-left: 0;
+}
+body[dir="rtl"] .nav-links a {
+    margin: 0 12px; /* Keep symmetric margin */
+}
+body[dir="rtl"] .nav-controls .control-btn {
+    margin-left: 0;
+    margin-right: 12px; /* Adjust margin for RTL */
+}
+body[dir="rtl"] header h1,
+body[dir="rtl"] header p,
+body[dir="rtl"] .section-title,
+body[dir="rtl"] #dailyTip,
+body[dir="rtl"] #quizSection {
+    text-align: right;
+}
+body[dir="rtl"] .card h3,
+body[dir="rtl"] .card p {
+    text-align: right;
+}
+body[dir="rtl"] .card .card-link {
+    text-align: center; /* Keep centered for buttons */
+}
+body[dir="rtl"] #quizContainer .quiz-option-btn {
+    text-align: right;
+    padding-left: 12px;
+    padding-right: 20px;
+}
+body[dir="rtl"] #quizContainer .quiz-option-btn:hover,
+body[dir="rtl"] #quizContainer .quiz-option-btn:focus {
+    transform: translateX(-5px); /* Reverse transform for RTL */
+}
+body[dir="rtl"] #quizFeedback .explanation {
+    text-align: right;
+    border-left: none;
+    border-right: 3px solid var(--secondary-accent);
+}
+
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 25px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-top: 40px;
+}
+.site-footer p {
+    margin-bottom: 8px;
+}
+.site-footer a {
+    color: var(--primary-accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+.site-footer a:hover, .site-footer a:focus {
+    text-decoration: underline;
+    outline: none;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); /* Dimmed background */
+    align-items: center;
+    justify-content: center;
+}
+.modal.active {
+    display: flex; /* Use flex to center content */
+}
+.modal-content {
     background-color: var(--card-bg);
+    margin: auto;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    position: relative; /* For close button positioning */
+    animation: fadeInModal 0.3s ease-out;
+}
+@keyframes fadeInModal {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.modal-close-btn {
+    color: var(--text-color);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    color: var(--primary-accent);
+    outline: none;
+}
+.modal-content h3 {
+    color: var(--primary-accent);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+.modal-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+
+/* Scroll to Top Button */
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: var(--primary-accent);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 50%; /* Circular button */
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.2s ease, opacity 0.3s ease, transform 0.2s ease;
+    z-index: 999;
+}
+.scroll-to-top-btn:hover,
+.scroll-to-top-btn:focus {
+    background-color: var(--primary-accent-darker);
+    transform: translateY(-3px);
+    outline: none;
+}
+.scroll-to-top-btn.show {
+    display: flex; /* Use flex to center icon */
+}
+
+/* NoScript Warning */
+.noscript-warning {
+    background-color: var(--error-color);
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3000; /* Above everything */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px; /* Adjust for potentially smaller nav */
+    }
+    .top-nav {
+        padding: 10px 15px;
+        flex-direction: column; /* Stack nav items on small screens */
+        align-items: flex-start;
+    }
+    .nav-brand {
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap; /* Allow links to wrap */
+        justify-content: center; /* Center links */
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .nav-links a {
+        margin: 5px 8px; /* Adjust margin for wrapped links */
+    }
+    .nav-controls {
+        width: 100%;
+        display: flex;
+        justify-content: center; /* Center control buttons */
+    }
+    .nav-controls .control-btn {
+        margin: 5px;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+    header p {
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .card-container {
+        grid-template-columns: 1fr; /* Single column for cards */
+    }
+    .card, .card-placeholder { /* Apply to placeholder too */
+        width: 100%;
+        max-width: 400px; /* Max width for single column cards */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #quizSection {
+        padding: 20px;
+    }
+    #quizContainer p {
+        font-size: 1.1rem;
+    }
+    .scroll-to-top-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .styled-button, .nav-controls .control-btn, #dailyTip #refreshTipBtn, .card .card-link {
+        padding: 8px 15px; /* Smaller padding for buttons */
+        font-size: 0.9rem;
+    }
+    #quizContainer .quiz-option-btn {
+        padding: 10px;
+        padding-left: 15px; /* Adjust for RTL/LTR consistency */
+    }
+    body[dir="rtl"] #quizContainer .quiz-option-btn {
+        padding-right: 15px;
+    }
+}
+
+/* Fade-in animation for tip text */
+#tipText.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Password Checker Styles */
+.password-checker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#passwordInput {
+    width: 100%;
     padding: 10px;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  #dailyTip button {
-    margin-top: 5px;
-    padding: 5px 10px;
-    background-color: var(--accent);
-    color: var(--bg-color);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
-    transition: background-color 0.2s;
-  }
-  
-  #dailyTip button:hover { 
-    background-color: var(--hover-accent);
-  }
-  
-  #resourceLibrary { margin: 20px 0; }
-  
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 25px;
-  }
-  
-  .card {
+    border-radius: var(--border-radius-md);
     background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 15px;
-    width: 260px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: none;
-    cursor: pointer;
-  }
-  
-  .card.active { display: block; }
-  
-  .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 10px var(--accent);
-  }
-  
-  .card h3 {
     color: var(--text-color);
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-  }
-  
-  .card a {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: var(--accent);
-    color: var(--bg-color);
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.2s;
-  }
-  
-  .card a:hover { 
-    background-color: var(--hover-accent);
-  }
-  
-  #quizSection {
-    background-color: var(--card-bg);
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    max-width: 500px;
-    margin: 20px auto;
+    font-family: var(--font-primary);
+}
+
+.password-feedback {
+    margin-top: 20px;
     text-align: center;
-  }
-  
-  #quizContainer button {
-    display: block;
-    width: 90%;
-    margin: 8px auto;
-    padding: 8px;
-    background-color: var(--accent);
-    color: var(--bg-color);
-    border: none;
-    border-radius: 4px;
-    font-family: 'Courier New', Courier, monospace;
+}
+
+.password-feedback .strength {
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s, opacity 0.2s;
-  }
-  
-  #quizContainer button:hover { 
-    background-color: var(--hover-accent);
-  }
-  
-  #quizContainer button:disabled { 
-    opacity: 0.6; 
-    cursor: not-allowed;
-  }
-  
-  #quizFeedback { 
-    margin-top: 10px; 
-    font-size: 1rem; 
-  }
-  
-  #nextBtn {
-    padding: 8px 15px;
-    margin-top: 10px;
-    background-color: var(--accent);
-    color: var(--bg-color);
-    border: none;
-    border-radius: 4px;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  #nextBtn:hover { 
-    background-color: var(--hover-accent);
-  }
-  
-  body[lang="ar"] {
-    direction: rtl;
+}
+
+.password-feedback .strength.weak {
+    color: var(--error-color);
+}
+
+.password-feedback .strength.medium {
+    color: #ffa500; /* Orange */
+}
+
+.password-feedback .strength.strong {
+    color: var(--success-color);
+}
+
+.password-feedback .tips {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+}
+
+body[dir="rtl"] .password-feedback {
     text-align: right;
-  }
-  
-  body[lang="ar"] .card p { 
-    text-align: right; 
-  }
-  
-  body[lang="ar"] nav a { 
-    margin: 0 10px; 
-  }
-  
-  @media (max-width: 600px) {
-    .card-container {
-      flex-direction: column;
-      align-items: center;
-    }
-    .card {
-      width: 100%;
-      max-width: 300px;
-    }
-  }
-  
+}
+
+body[dir="rtl"] .tips {
+    padding-right: 20px;
+    padding-left: 0;
+    text-align: right;
+}
